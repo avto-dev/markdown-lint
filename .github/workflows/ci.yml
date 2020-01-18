@@ -51,9 +51,9 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
         with:
           rules: '/lint/rules/changelog.js'
           config: '/lint/config/changelog.yml'
-          path: './CHANGELOG.md'
+          args: './CHANGELOG.md'
 
       - name: Run current action using stub markdown file
         uses: ./
         with:
-          path: './tests/correct.md'
+          args: './tests/correct.md'

@@ -4,6 +4,7 @@
 
 # Pre-configured linter for markdown
 
+![Release][badge_release]
 [![Build][badge_ci]][link_actions]
 [![Build][badge_build]][link_hub]
 [![Docker Pulls][badge_pulls]][link_hub]
@@ -85,18 +86,18 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
-    
+
     - name: Lint changelog file
-      uses: avto-dev/markdown-lint@v1
+      uses: docker://avtodev/markdown-lint:v1
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
         path: './CHANGELOG.md'
-    
-    # Or use ready docker image:
-    
+
+    # Or using current repository as action:
+
     - name: Lint changelog file
-      uses: avto-dev/markdown-lint@v0
+      uses: avto-dev/markdown-lint@v1
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
@@ -107,6 +108,7 @@ jobs:
 
 MIT. Use anywhere for your pleasure.
 
+[badge_release]:https://img.shields.io/github/v/release/avto-dev/markdown-lint?include_prereleases&style=flat-square&maxAge=10
 [badge_ci]:https://img.shields.io/github/workflow/status/avto-dev/markdown-lint/CI?style=flat-square&maxAge=10
 [badge_pulls]:https://img.shields.io/docker/pulls/avtodev/markdown-lint.svg?style=flat-square&maxAge=30
 [badge_issues]:https://img.shields.io/github/issues/avto-dev/markdown-lint.svg?style=flat-square&maxAge=30

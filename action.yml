@@ -19,15 +19,15 @@ inputs: # <https://git.io/JvkYF#inputs>
   ignore:
     description: 'Files to ignore/exclude'
     required: false
-  path:
-    description: 'Files (directories|globs) for a work'
+  args:
+    description: 'Files (directories|globs) for a work or any additional arguments'
     required: true
 
 runs: # <https://git.io/JvkYF#runs>
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.path }}
+    - ${{ inputs.args }}
 
 branding: # <https://git.io/JvkYF#branding>
   icon: file-text
