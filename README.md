@@ -51,7 +51,7 @@ For example, you can lint your `CHANGELOG.md` file using following command:
 
 ```bash
 $ docker run \
-    --rm -v "$(pwd)/CHANGELOG.md:/CHANGELOG.md"\
+    --rm -v "$(pwd)/CHANGELOG.md:/CHANGELOG.md" \
     avtodev/markdown-lint:1.x \
     --rules /lint/rules/changelog.js --config /lint/config/changelog.yml /CHANGELOG.md
 ```
