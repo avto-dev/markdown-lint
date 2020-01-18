@@ -16,4 +16,5 @@ jobs:
       - name: Run current action
         uses: ./
         with:
-          args: '--rules /lint/rules/changelog.js --config /lint/config/changelog.yml /CHANGELOG.md'
+          args: '--rules /lint/rules/changelog.js --config /lint/config/changelog.yml '
+          path: './CHANGELOG.md'

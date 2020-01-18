@@ -5,11 +5,17 @@ author: avto-dev
 inputs: # <https://git.io/JvkYF#inputs>
   args:
     description: 'Run arguments'
+    required: false
+  path:
+    description: 'Files, directories or globs to lint'
     required: true
 
 runs: # <https://git.io/JvkYF#runs>
   using: docker
   image: 'avtodev/markdown-lint:1.x'
+  args:
+    - ${{ inputs.args }}
+    - ${{ inputs.path }}
 
 branding: # <https://git.io/JvkYF#branding>
   icon: file-text
