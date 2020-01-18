@@ -3,19 +3,30 @@ description: GitHub Action to run markdown linter
 author: avto-dev
 
 inputs: # <https://git.io/JvkYF#inputs>
-  args:
-    description: 'Run arguments'
+  rules:
+    description: 'Custom rule files (file|directory|glob|package)'
+    required: false
+  config:
+    description: 'Configuration file (JSON, JSONC, or YAML)'
+    required: false
+  fix:
+    description: 'Fix basic errors'
+    required: false
+  output:
+    description: 'Write issues to file'
+    required: false
+  ignore:
+    description: 'Files to ignore/exclude'
     required: false
   path:
-    description: 'Files, directories or globs to lint'
+    description: 'Files (directories|globs) for a work'
     required: true
 
 runs: # <https://git.io/JvkYF#runs>
   using: docker
-  image: 'avtodev/markdown-lint:1.x'
+  image: Dockerfile
   args:
-    - ${{ inputs.args }}
-    - ${{ inputs.path }}
+    - ${{ inputs.target }}
 
 branding: # <https://git.io/JvkYF#branding>
   icon: file-text

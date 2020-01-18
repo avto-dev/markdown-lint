@@ -1,0 +1,39 @@
+name: Execute tests
+
+on:
+  push:
+    branches: '**'
+    tags: '**'
+  pull_request:
+
+jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-actions>
+  docker-image:
+    name: Build docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Build image
+        run: docker build -t markdown-lint:local -f Dockerfile .
+
+      - name: Try to execute
+        run: docker run --rm markdown-lint:local --version
+
+  run-as-action:
+    name: Test action using repository changelog file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Run current action
+        uses: ./
+        with:
+          rules: '/lint/rules/changelog.js'
+          config: '/lint/config/changelog.yml'
+          path: './CHANGELOG.md'
