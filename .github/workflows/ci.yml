@@ -1,4 +1,4 @@
-name: Execute tests
+name: CI
 
 on:
   push:
@@ -7,6 +7,21 @@ on:
   pull_request:
 
 jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-actions>
+  tests:
+    name: Execute provided tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Build image
+        run: docker build -t markdown-lint:local -f Dockerfile .
+
+      - name: Execute tests
+        run: docker run --rm -t -v "$(pwd)/tests:/tests" -w "/tests" --entrypoint "" markdown-lint:local /tests/run.sh
+
   docker-image:
     name: Build docker image
     runs-on: ubuntu-latest
@@ -31,9 +46,14 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
         with:
           fetch-depth: 1
 
-      - name: Run current action
+      - name: Run current action using changelog file
         uses: ./
         with:
           rules: '/lint/rules/changelog.js'
           config: '/lint/config/changelog.yml'
           path: './CHANGELOG.md'
+
+      - name: Run current action using readme
+        uses: ./
+        with:
+          path: './README.md'
