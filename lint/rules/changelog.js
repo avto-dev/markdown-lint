@@ -24,7 +24,7 @@ module.exports = [{
                 return onError({
                     lineNumber: token.lineNumber,
                     detail: "Allowed formats: 'vX.X.X(-pre.release)' or 'vX.X.X(-pre.release) - YYYY-MM-DD' or 'UNRELEASED'",
-                    context: token.line.trim()
+                    context: token.line
                 });
             }
         });
@@ -45,7 +45,7 @@ module.exports = [{
                 return onError({
                     lineNumber: token.lineNumber,
                     detail: "Allowed types is: Added, Changed, Deprecated, Removed, Fixed or Security",
-                    context: token.line.trim()
+                    context: token.line
                 });
             }
         });
@@ -63,7 +63,7 @@ module.exports = [{
                     return onError({
                         lineNumber: token.lineNumber,
                         detail: "'.', ';' or ',' at the end of list entry",
-                        context: token.line.trim()
+                        context: token.line
                     });
                 }
             }

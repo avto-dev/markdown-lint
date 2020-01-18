@@ -19,7 +19,7 @@ inputs: # <https://git.io/JvkYF#inputs>
   ignore:
     description: 'Files to ignore/exclude'
     required: false
-  args:
+  args: # do not change this name! reason: <https://git.io/Jvk8K> (usage as named action and docker image with same syntax)
     description: 'Files (directories|globs) for a work or any additional arguments'
     required: true
 

@@ -92,7 +92,7 @@ jobs:
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
-        path: './CHANGELOG.md'
+        args: './CHANGELOG.md'
 
     # Or using current repository as action:
 
@@ -101,7 +101,7 @@ jobs:
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
-        path: './CHANGELOG.md'
+        args: './CHANGELOG.md'
 ```
 
 ### License

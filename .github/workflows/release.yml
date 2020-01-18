@@ -1,0 +1,32 @@
+name: release
+
+on:
+  release: # Docs: <https://help.github.com/en/articles/events-that-trigger-workflows#release-event-release>
+    types: [prereleased, published]
+
+jobs:
+  update-git-tag: # Reason: <https://github.com/actions/toolkit/blob/master/docs/action-versioning.md#recommendations>
+    name: Update latest major git tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Get version value
+        run: echo "::set-env name=_VERSION::${GITHUB_REF##*/}"
+
+      - name: Get major version value (without 'v' prefix)
+        run: echo "::set-env name=_MAJOR::`echo $_VERSION | sed 's#^[vV]\([0-9]*\)\..*$#\1#'`"
+
+      - name: Setup git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Create tag
+        run: git tag -fa "v${_MAJOR}" -m "Update v${_MAJOR} tag (using GitHub actions)"
+
+      - name: Push tag
+        run: git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" "v${_MAJOR}" --force
