@@ -24,10 +24,26 @@ Tag name |       Full image name       | Dockerfile
 
 This image contains [markdownlint-cli][markdownlint-cli] and:
 
-- Additional rules for `changelog` file linting
-- Configuration file for `changelog` file linting _(it uses additional linting rules)_
+- Additional rules for `changelog` file linting _(`/lint/rules/changelog.js`)_
+- Configuration file for `changelog` file linting _(it uses additional linting rules, `/lint/config/changelog.yml`)_
 
 > Image can be updated in any time, but all changes will be backwards compatible.
+
+`markdownlint-cli` supports next options (more details can be found [on project page][markdownlint-cli]):
+
+```bash
+Usage: markdownlint [options] <files|directories|globs>
+
+Options:
+  -h, --help                                  output usage information
+  -V, --version                               output the version number
+  -f, --fix                                   fix basic errors (does not work with STDIN)
+  -s, --stdin                                 read from STDIN (does not work with files)
+  -o, --output [outputFile]                   write issues to file (no console)
+  -c, --config [configFile]                   configuration file (JSON, JSONC, or YAML)
+  -i, --ignore [file|directory|glob]          files to ignore/exclude
+  -r, --rules  [file|directory|glob|package]  custom rule files
+```
 
 ### Usage
 
