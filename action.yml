@@ -1,0 +1,16 @@
+name: Markdown Linting Action
+description: GitHub Action to run markdown linter
+author: avto-dev
+
+inputs: # <https://git.io/JvkYF#inputs>
+  args:
+    description: 'Run arguments'
+    required: true
+
+runs: # <https://git.io/JvkYF#runs>
+  using: docker
+  image: 'avtodev/markdown-lint:1.x'
+
+branding: # <https://git.io/JvkYF#branding>
+  icon: file-text
+  color: green

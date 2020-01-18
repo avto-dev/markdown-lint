@@ -1,0 +1,19 @@
+# https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
+name: Test action
+
+on: [push]
+
+jobs:
+  changelog:
+    name: Test action using repository changelog file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Run current action
+        uses: ./
+        with:
+          args: '--rules /lint/rules/changelog.js --config /lint/config/changelog.yml /CHANGELOG.md'

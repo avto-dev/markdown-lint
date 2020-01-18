@@ -22,7 +22,7 @@ Tag name |       Full image name       | Dockerfile
 
 ## v1.x
 
-This image contains [markdownlint-cli][markdownlint-cli] and:
+This image contains [markdownlint-cli][markdownlint-cli] (node-js) and:
 
 - Additional rules for `changelog` file linting _(`/lint/rules/changelog.js`)_
 - Configuration file for `changelog` file linting _(it uses additional linting rules, `/lint/config/changelog.yml`)_
