@@ -23,7 +23,7 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
         run: docker run --rm markdown-lint:local --version
 
   run-as-action:
-    name: Test action using repository changelog file
+    name: Run action
     runs-on: ubuntu-latest
     steps:
       - name: Check out code

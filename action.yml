@@ -10,8 +10,9 @@ inputs: # <https://git.io/JvkYF#inputs>
     description: 'Configuration file (JSON, JSONC, or YAML)'
     required: false
   fix:
-    description: 'Fix basic errors (set "true")'
+    description: 'Fix basic errors'
     required: false
+    default: 'false'
   output:
     description: 'Write issues to file'
     required: false
@@ -26,7 +27,7 @@ runs: # <https://git.io/JvkYF#runs>
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.target }}
+    - ${{ inputs.path }}
 
 branding: # <https://git.io/JvkYF#branding>
   icon: file-text
