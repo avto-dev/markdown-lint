@@ -2,7 +2,7 @@
  <img src="https://hsto.org/webt/jj/z4/-o/jjz4-ofmx_k18yeslacjnjuzrve.png" width="128" alt="icon">
 </p>
 
-# Pre-configured linter for markdown
+# Linter for markdown <sub><sup>| with presets</sup></sub>
 
 ![Release][badge_release]
 [![Build][badge_ci]][link_actions]
@@ -59,7 +59,7 @@ For example, you can lint your `CHANGELOG.md` file using following command:
 ```bash
 $ docker run --rm \
     -v "$(pwd)/CHANGELOG.md:/CHANGELOG.md:ro" \
-    avtodev/markdown-lint:1 \
+    avtodev/markdown-lint:v1 \
     --rules /lint/rules/changelog.js \
     --config /lint/config/changelog.yml \
     /CHANGELOG.md
@@ -72,7 +72,7 @@ $ docker run --rm \
     -v "$(pwd)/CHANGELOG.md:/CHANGELOG.md:ro" \
     -e INPUT_RULES=/lint/rules/changelog.js \
     -e INPUT_CONFIG=/lint/config/changelog.yml \
-    avtodev/markdown-lint:0 \
+    avtodev/markdown-lint:v1 \
     /CHANGELOG.md
 ```
 
