@@ -53,7 +53,7 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
           config: '/lint/config/changelog.yml'
           path: './CHANGELOG.md'
 
-      - name: Run current action using readme
+      - name: Run current action using stub markdown file
         uses: ./
         with:
-          path: './README.md'
+          path: './tests/correct.md'
