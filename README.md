@@ -71,32 +71,36 @@ $ docker run --rm \
     -v "$(pwd)/CHANGELOG.md:/CHANGELOG.md:ro" \
     -e INPUT_RULES=/lint/rules/changelog.js \
     -e INPUT_CONFIG=/lint/config/changelog.yml \
-    avtodev/markdown-lint:1 \
+    avtodev/markdown-lint:0 \
     /CHANGELOG.md
 ```
 
 ### GitHub Actions
 
 ```yaml
-steps:
-- name: Check out code
-  uses: actions/checkout@v2
-
-- name: Lint changelog file
-  uses: avto-dev/markdown-lint@v1
-  with:
-    rules: '/lint/rules/changelog.js'
-    config: '/lint/config/changelog.yml'
-    path: './CHANGELOG.md'
-
-# Or use ready docker image:
-
-- name: Upload asset to release
-  uses: docker://avtodev/markdown-lint:1
-  with:
-    rules: '/lint/rules/changelog.js'
-    config: '/lint/config/changelog.yml'
-    path: './CHANGELOG.md'
+jobs:
+  lint-changelog:
+    name: Lint changelog file
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    
+    - name: Lint changelog file
+      uses: avto-dev/markdown-lint@v1
+      with:
+        rules: '/lint/rules/changelog.js'
+        config: '/lint/config/changelog.yml'
+        path: './CHANGELOG.md'
+    
+    # Or use ready docker image:
+    
+    - name: Lint changelog file
+      uses: avto-dev/markdown-lint@v0
+      with:
+        rules: '/lint/rules/changelog.js'
+        config: '/lint/config/changelog.yml'
+        path: './CHANGELOG.md'
 ```
 
 ### License
