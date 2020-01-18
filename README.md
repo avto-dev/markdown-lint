@@ -4,30 +4,24 @@
 
 # Pre-configured linter for markdown
 
-[![Build][badge_automated]][link_hub]
+[![Build][badge_ci]][link_actions]
 [![Build][badge_build]][link_hub]
 [![Docker Pulls][badge_pulls]][link_hub]
 [![Issues][badge_issues]][link_issues]
 [![License][badge_license]][link_license]
 
-## What is this?
+This repository contains source files of docker image (and [github action][github_actions_doc]) for markdown files linting. Additionally we provides setting _(rules)_ for the most useful cases, like changelog file linting.
 
-This repository contains Dockerfiles with application for markdown files linting. Additionally we provides setting _(rules)_ for the most useful cases, like changelog file linting.
+All docker images always can be found on **[this page][link_hub_tags]**.
 
-### Supported tags
-
-Tag name |       Full image name       | Dockerfile
-:------: | :-------------------------: | :--------:
- `1.x`   | `avtodev/markdown-lint:1.x` | [link](https://github.com/avto-dev/markdown-lint/blob/image-1.x/Dockerfile)
-
-## v1.x
+## Usage
 
 This image contains [markdownlint-cli][markdownlint-cli] (node-js) and:
 
 - Additional rules for `changelog` file linting _(`/lint/rules/changelog.js`)_
 - Configuration file for `changelog` file linting _(it uses additional linting rules, `/lint/config/changelog.yml`)_
 
-> Image can be updated in any time, but all changes will be backwards compatible.
+> Major image tag can be updated in any time, but all changes will be backwards compatible.
 
 `markdownlint-cli` supports next options (more details can be found [on project page][markdownlint-cli]):
 
@@ -45,27 +39,79 @@ Options:
   -r, --rules  [file|directory|glob|package]  custom rule files
 ```
 
-### Usage
+### Environment variables
+
+Some linter execution options can be passed through environment variables _(multiple variables usage are allowed)_:
+
+Environment variable    | Interpretation
+----------------------- | --------------
+`INPUT_RULES=/foo.js`   | `markdownlint --rules /foo.js ...`
+`INPUT_CONFIG=/bar.yml` | `markdownlint --config /bar.yml ...`
+`INPUT_FIX=true`        | `markdownlint --fix ...`
+`INPUT_OUTPUT=/foo`     | `markdownlint --output /foo ...`
+`INPUT_IGNORE=/bar`     | `markdownlint --ignore /bar ...`
+
+### Docker
 
 For example, you can lint your `CHANGELOG.md` file using following command:
 
 ```bash
-$ docker run \
-    --rm -v "$(pwd)/CHANGELOG.md:/CHANGELOG.md" \
-    avtodev/markdown-lint:1.x \
-    --rules /lint/rules/changelog.js --config /lint/config/changelog.yml /CHANGELOG.md
+$ docker run --rm \
+    -v "$(pwd)/CHANGELOG.md:/CHANGELOG.md:ro" \
+    avtodev/markdown-lint:1 \
+    --rules /lint/rules/changelog.js \
+    --config /lint/config/changelog.yml \
+    /CHANGELOG.md
+```
+
+or 
+
+```bash
+$ docker run --rm \
+    -v "$(pwd)/CHANGELOG.md:/CHANGELOG.md:ro" \
+    -e INPUT_RULES=/lint/rules/changelog.js \
+    -e INPUT_CONFIG=/lint/config/changelog.yml \
+    avtodev/markdown-lint:1 \
+    /CHANGELOG.md
+```
+
+### GitHub Actions
+
+```yaml
+steps:
+- name: Check out code
+  uses: actions/checkout@v2
+
+- name: Lint changelog file
+  uses: avto-dev/markdown-lint@v1
+  with:
+    rules: '/lint/rules/changelog.js'
+    config: '/lint/config/changelog.yml'
+    path: './CHANGELOG.md'
+
+# Or use ready docker image:
+
+- name: Upload asset to release
+  uses: docker://avtodev/markdown-lint:1
+  with:
+    rules: '/lint/rules/changelog.js'
+    config: '/lint/config/changelog.yml'
+    path: './CHANGELOG.md'
 ```
 
 ### License
 
 MIT. Use anywhere for your pleasure.
 
-[badge_automated]:https://img.shields.io/docker/cloud/automated/avtodev/markdown-lint.svg?style=flat-square&maxAge=30
+[badge_ci]:https://img.shields.io/github/workflow/status/avto-dev/markdown-lint/CI?style=flat-square&maxAge=10
 [badge_pulls]:https://img.shields.io/docker/pulls/avtodev/markdown-lint.svg?style=flat-square&maxAge=30
 [badge_issues]:https://img.shields.io/github/issues/avto-dev/markdown-lint.svg?style=flat-square&maxAge=30
 [badge_build]:https://img.shields.io/docker/cloud/build/avtodev/markdown-lint.svg?style=flat-square&maxAge=30
 [badge_license]:https://img.shields.io/github/license/avto-dev/markdown-lint.svg?style=flat-square&maxAge=30
 [link_hub]:https://hub.docker.com/r/avtodev/markdown-lint/
+[link_hub_tags]:https://hub.docker.com/r/avtodev/markdown-lint/tags
 [link_license]:https://github.com/avto-dev/markdown-lint/blob/master/LICENSE
 [link_issues]:https://github.com/avto-dev/markdown-lint/issues
+[link_actions]:https://github.com/avto-dev/markdown-lint/actions
 [markdownlint-cli]:https://github.com/igorshubovych/markdownlint-cli
+[github_actions_doc]:https://help.github.com/en/actions
