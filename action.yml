@@ -10,7 +10,7 @@ inputs: # <https://git.io/JvkYF#inputs>
     description: 'Configuration file (JSON, JSONC, or YAML)'
     required: false
   fix:
-    description: 'Fix basic errors'
+    description: 'Fix basic errors (set "true")'
     required: false
   output:
     description: 'Write issues to file'
