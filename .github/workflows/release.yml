@@ -2,7 +2,7 @@ name: release
 
 on:
   release: # Docs: <https://help.github.com/en/articles/events-that-trigger-workflows#release-event-release>
-    types: [prereleased, published]
+    types: [published]
 
 jobs:
   update-git-tag: # Reason: <https://github.com/actions/toolkit/blob/master/docs/action-versioning.md#recommendations>
