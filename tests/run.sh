@@ -43,3 +43,4 @@ runChangelogTest ./samples/changelog/incorrect/missed-first-header.md true "Firs
 runChangelogTest ./samples/changelog/incorrect/wrong-version-header-1.md true "Version header format"
 runChangelogTest ./samples/changelog/incorrect/wrong-version-header-2.md true "Version header format"
 runChangelogTest ./samples/changelog/incorrect/wrong-version-header-3.md true "Version header format"
+runChangelogTest ./samples/changelog/incorrect/duplicated-unreleased-header.md true "Only one 'unreleased' version header"

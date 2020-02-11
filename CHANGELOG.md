@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.1.0 - 2020-02-11
+
+### Added
+
+- Changelog rule `CHANGELOG-RULE-004` - Only one "unreleased" version header allowed
+
+### Changed
+
+- Changelog rule `CHANGELOG-RULE-004` enabled in changelog linter config `changelog.yml`
+
 ## v1.0.0 - 2020-01-18
 
 ### Changed

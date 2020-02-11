@@ -69,4 +69,29 @@ module.exports = [{
             }
         });
     }
+}, {
+    names: ["CHANGELOG-RULE-004"],
+    description: "Only one 'unreleased' version header allowed",
+    tags: ["headings", "headers", "changelog"],
+    function: (params, onError) => {
+        let headers_count = 0;
+
+        params.tokens.filter(function filterToken(token) {
+            return token.type === "heading_open";
+        }).forEach(function forToken(token) {
+            if (token.tag === "h2") {
+                if (/^## unreleased$/mi.test(token.line)) {
+                    headers_count++;
+                }
+
+                if (headers_count >= 2) {
+                    return onError({
+                        lineNumber: token.lineNumber,
+                        detail: "Remove duplicated header",
+                        context: token.line
+                    });
+                }
+            }
+        });
+    }
 }];
