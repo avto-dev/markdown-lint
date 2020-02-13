@@ -99,27 +99,27 @@ module.exports = [{
     description: "Punctuation problem, do not use space before, only space after",
     tags: ["space", "punctuation", "changelog"],
     function: (params, onError) => {
-
+        let new_line = '';
         params.tokens.filter(function filterToken(token) {
             return ['heading_open', 'paragraph_open', 'list_item_open'].indexOf(token.type) !== -1
                 && ['h1', 'h2', 'h3'].indexOf(token.tag) === -1;
         }).forEach(function forToken(token) {
-            if (/\s+[,\.;:]/mi.test(token.line)) {
+            new_line = token.line.replace(/`([^`]+)`/img, '');
+            if (/\s+[,.;:]/mi.test(new_line)) {
                 return onError({
                     lineNumber: token.lineNumber,
                     detail: "Remove space before punctuation",
                     context: token.line
                 });
             }
+
             // Detect if punctuation not at the end
-            if (/(!?[,\.:;])$/mi.test(token.line) === false) {
-                if ((/[,\.;:][^\s]/mi.test(token.line))) {
-                    return onError({
-                        lineNumber: token.lineNumber,
-                        detail: "Add space after punctuation",
-                        context: token.line
-                    });
-                }
+            if ((/[,.;:][^\s]/mi.test(new_line))) {
+                return onError({
+                    lineNumber: token.lineNumber,
+                    detail: "Add space after punctuation",
+                    context: token.line
+                });
             }
         });
     }

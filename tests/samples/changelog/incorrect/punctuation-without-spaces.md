@@ -12,9 +12,16 @@ Some hidden content goes here.
 
 ## UNRELEASED
 
+### Added
+
+- Dont touch filenames in code tags `file/leaves.here` like .this 
+
 ### Changed
 
+#### Important.Changes
+
 - Some feature updated , like this , or that [issue-4] ([@octocat])  
+- Important files were changed in folder `/src`: .[issue-4],([@octocat])  
 
 ### Removed
 
