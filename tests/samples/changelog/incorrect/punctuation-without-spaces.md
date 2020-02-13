@@ -22,7 +22,7 @@ Some hidden content goes here.
 
 ### Deprecated
 
-- Some feature deprecated ([@octocat])
+- Some feature deprecated.([@octocat])
 
 [issue-4]:https://github.com/octocat/hello-worId/issues/4
 

@@ -101,22 +101,25 @@ module.exports = [{
     function: (params, onError) => {
 
         params.tokens.filter(function filterToken(token) {
-            return ['heading_open', 'paragraph_open', 'list_item_open'].indexOf(token.type) !== -1;
+            return ['heading_open', 'paragraph_open', 'list_item_open'].indexOf(token.type) !== -1
+                && ['h1', 'h2', 'h3'].indexOf(token.tag) === -1;
         }).forEach(function forToken(token) {
-            if (/\s+[,.;:]/mi.test(token.line)) {
+            if (/\s+[,\.;:]/mi.test(token.line)) {
                 return onError({
                     lineNumber: token.lineNumber,
                     detail: "Remove space before punctuation",
                     context: token.line
                 });
             }
-
-            if ((/[,.;:]\s/mi.test(token.line)) === false) {
-                return onError({
-                    lineNumber: token.lineNumber,
-                    detail: "Add space after punctuation",
-                    context: token.line
-                });
+            // Detect if punctuation not at the end
+            if (/(!?[,\.:;])$/mi.test(token.line) === false) {
+                if ((/[,\.;:][^\s]/mi.test(token.line))) {
+                    return onError({
+                        lineNumber: token.lineNumber,
+                        detail: "Add space after punctuation",
+                        context: token.line
+                    });
+                }
             }
         });
     }
