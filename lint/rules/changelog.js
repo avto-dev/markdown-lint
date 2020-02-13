@@ -94,4 +94,32 @@ module.exports = [{
             }
         });
     }
+}, {
+    names: ["CHANGELOG-RULE-005"],
+    description: "Punctuation problem, do not use space before, only space after",
+    tags: ["space", "punctuation", "changelog"],
+    function: (params, onError) => {
+
+        params.tokens.filter(function filterToken(token) {
+            //console.info('token', token.type);
+            return ['heading_open', 'paragraph_open', 'list_item_open'].indexOf(token.type) !== -1;
+        }).forEach(function forToken(token) {
+            //console.info('token', token.type, token.line);
+            if (/\s+[,.;:]/mi.test(token.line)) {
+                return onError({
+                    lineNumber: 1,
+                    detail: "Remove space before punctuation",
+                    context: token.line
+                });
+            }
+
+            if ((/[,.;:]\s/mi.test(token.line)) === false) {
+                return onError({
+                    lineNumber: 2,
+                    detail: "Add space after punctuation",
+                    context: token.line
+                });
+            }
+        });
+    }
 }];
