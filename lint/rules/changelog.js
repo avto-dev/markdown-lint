@@ -101,13 +101,11 @@ module.exports = [{
     function: (params, onError) => {
 
         params.tokens.filter(function filterToken(token) {
-            //console.info('token', token.type);
             return ['heading_open', 'paragraph_open', 'list_item_open'].indexOf(token.type) !== -1;
         }).forEach(function forToken(token) {
-            //console.info('token', token.type, token.line);
             if (/\s+[,.;:]/mi.test(token.line)) {
                 return onError({
-                    lineNumber: 1,
+                    lineNumber: token.lineNumber,
                     detail: "Remove space before punctuation",
                     context: token.line
                 });
@@ -115,7 +113,7 @@ module.exports = [{
 
             if ((/[,.;:]\s/mi.test(token.line)) === false) {
                 return onError({
-                    lineNumber: 2,
+                    lineNumber: token.lineNumber,
                     detail: "Add space after punctuation",
                     context: token.line
                 });
