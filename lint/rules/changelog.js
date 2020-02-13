@@ -96,28 +96,32 @@ module.exports = [{
     }
 }, {
     names: ["CHANGELOG-RULE-005"],
-    description: "Punctuation problem, do not use space before, only space after",
+    description: "Error with spaces between delimiters",
     tags: ["space", "punctuation", "changelog"],
     function: (params, onError) => {
-        let new_line = '';
+        let token_line = '';
         params.tokens.filter(function filterToken(token) {
             return ['heading_open', 'paragraph_open', 'list_item_open'].indexOf(token.type) !== -1
                 && ['h1', 'h2', 'h3'].indexOf(token.tag) === -1;
         }).forEach(function forToken(token) {
-            new_line = token.line.replace(/`([^`]+)`/img, '');
-            if (/\s+[,.;:]/mi.test(new_line)) {
+            // Remove tags <code>, <i> and <b>
+            token_line = token.line.replace(/`([^`]+)`/g, '')
+                .replace(/(\*\*|__)(?=\S)([^\r]*?\S[*_]*)\1/g, '')
+                .replace(/(\*|_)(?=\S)([^\r]*?\S)\1/g, '');
+
+            if (/\s+[,.;:]/mi.test(token_line)) {
                 return onError({
                     lineNumber: token.lineNumber,
-                    detail: "Remove space before punctuation",
+                    detail: "Remove space before delimiter",
                     context: token.line
                 });
             }
 
             // Detect if punctuation not at the end
-            if ((/[,.;:][^\s]/mi.test(new_line))) {
+            if ((/[,.;:][^\s]/mi.test(token_line))) {
                 return onError({
                     lineNumber: token.lineNumber,
-                    detail: "Add space after punctuation",
+                    detail: "Add space after delimiter",
                     context: token.line
                 });
             }
