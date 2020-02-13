@@ -105,10 +105,9 @@ module.exports = [{
                 && ['h1', 'h2', 'h3'].indexOf(token.tag) === -1;
         }).forEach(function forToken(token) {
             // Remove tags <code>, <i> and <b>
-            token_line = token.line.replace(/`([^`]+)`/g, '')
-                .replace(/(\*\*|__)(?=\S)([^\r]*?\S[*_]*)\1/g, '')
-                .replace(/(\*|_)(?=\S)([^\r]*?\S)\1/g, '');
-
+            token_line = token.line.replace(/`([^`]+)`/g, 'replace')
+                .replace(/(\*\*|__)(?=\S)([^\r]*?\S[*_]*)\1/g, 'replace')
+                .replace(/(\*|_)(?=\S)([^\r]*?\S)\1/g, 'replace');
             if (/\s+[,.;:]/mi.test(token_line)) {
                 return onError({
                     lineNumber: token.lineNumber,
