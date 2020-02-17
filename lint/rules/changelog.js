@@ -96,34 +96,25 @@ module.exports = [{
     }
 }, {
     names: ["CHANGELOG-RULE-005"],
-    description: "Error with spaces between delimiters",
+    description: "Error with spaces between punctuation marks",
     tags: ["space", "punctuation", "changelog"],
     function: (params, onError) => {
-        let token_line = '';
         params.tokens.filter(function filterToken(token) {
-            return ['heading_open', 'paragraph_open', 'list_item_open'].indexOf(token.type) !== -1
+            return ['paragraph_open', 'list_item_open'].indexOf(token.type) !== -1
                 && ['h1', 'h2', 'h3'].indexOf(token.tag) === -1;
         }).forEach(function forToken(token) {
-            // Remove tags <code>, <i> and <b>
-            token_line = token.line.replace(/`([^`]+)`/g, 'replace')
-                .replace(/(\*\*|__)(?=\S)([^\r]*?\S[*_]*)\1/g, 'replace')
-                .replace(/(\*|_)(?=\S)([^\r]*?\S)\1/g, 'replace');
-            if (/\s+[,.;:]/mi.test(token_line)) {
-                return onError({
-                    lineNumber: token.lineNumber,
-                    detail: "Remove space before delimiter",
-                    context: token.line
-                });
-            }
+            // token.line = token.line.replace(/([`_*]{1,3})([a-zа-я.,;]+)([,\.;])([a-zа-я.,;]+)(\1)/gmui, 'word');
+            token.line = token.line.replace(/([`_*]{1,3})([\S]+)([,\.;])([\S]+)(\1)/gmui, 'word');
 
-            // Detect if punctuation not at the end
-            if ((/[,.;:][^\s]/mi.test(token_line))) {
-                return onError({
-                    lineNumber: token.lineNumber,
-                    detail: "Add space after delimiter",
-                    context: token.line
-                });
-            }
+            [/\s[.,;]/gm, /[.,;][^\s]/gm, /[\S]\.[А-ЯA-Z]/gmu].forEach(function (pattern) {
+                if (pattern.test(token.line)) {
+                    return onError({
+                        lineNumber: token.lineNumber,
+                        detail: "Remove extra spaces between punctuation marks",
+                        context: token.line
+                    });
+                }
+            });
         });
     }
 }];

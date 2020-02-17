@@ -35,7 +35,6 @@ runChangelogTest() {
 }
 
 runChangelogTest ./samples/changelog/correct/sample-1.md false
-runChangelogTest ./samples/changelog/correct/delimiter-in-tags.md false
 runChangelogTest ./samples/changelog/incorrect/changes-list-with-ends-punctuation-1.md true "Lists items without punctuation"
 runChangelogTest ./samples/changelog/incorrect/changes-list-with-ends-punctuation-2.md true "Lists items without punctuation"
 runChangelogTest ./samples/changelog/incorrect/incorrect-cahnges-type-1.md true "Type of changes format"
@@ -46,4 +45,12 @@ runChangelogTest ./samples/changelog/incorrect/wrong-version-header-2.md true "V
 runChangelogTest ./samples/changelog/incorrect/wrong-version-header-3.md true "Version header format"
 runChangelogTest ./samples/changelog/incorrect/duplicated-unreleased-header.md true "Only one 'unreleased' version header"
 
-runChangelogTest ./samples/changelog/incorrect/delimiter-with-spaces.md true "Error with spaces between delimiters"
+
+runChangelogTest ./samples/changelog/correct/punctuation_marks/with-correct-spaces.md false
+runChangelogTest ./samples/changelog/correct/punctuation_marks/delimiter-in-tags.md false
+
+runChangelogTest ./samples/changelog/incorrect/punctuation_marks/with-space-before.md true "Error with spaces between punctuation marks"
+runChangelogTest ./samples/changelog/incorrect/punctuation_marks/without-space-after.md true "Error with spaces between punctuation marks"
+runChangelogTest ./samples/changelog/incorrect/punctuation_marks/without-space-before-word.md true "Error with spaces between punctuation marks"
+runChangelogTest ./samples/changelog/incorrect/punctuation_marks/without-space-before-word-cyrillic.md true "Error with spaces between punctuation marks"
+runChangelogTest ./samples/changelog/incorrect/punctuation_marks/delimiter-with-spaces.md true "Error with spaces between punctuation marks"
