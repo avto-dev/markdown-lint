@@ -9,15 +9,23 @@ module.exports = [{
             return token.type === "heading_open";
         }).forEach(function forToken(token) {
             if (token.tag === "h2") {
-                if (/^## [vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)$/m.test(token.line)) {
+                if (/^## [vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)?$/m.test(token.line)) {
                     return;
                 }
-
-                if (/^## [vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|) - 20[12][0-9]-[01][0-9]-[0-3][0-9]$/m.test(token.line)) {
+                if (/^## \[[vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)?]$/m.test(token.line)) {
+                    return;
+                }
+                if (/^## [vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|) [-–] 20[12][0-9]-[01][0-9]-[0-3][0-9]$/m.test(token.line)) {
+                    return;
+                }
+                if (/^## \[[vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)\] [-–] 20[12][0-9]-[01][0-9]-[0-3][0-9]$/m.test(token.line)) {
                     return;
                 }
 
                 if (/^## unreleased$/mi.test(token.line)) {
+                    return;
+                }
+                if (/^## \[unreleased\]$/mi.test(token.line)) {
                     return;
                 }
 
