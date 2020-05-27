@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## Unreleased
+
+### Added
+
+- Added support for passing multiple parameters to markdown-lint.
+
 ## v1.1.0 - 2020-02-11
 
 ### Added
