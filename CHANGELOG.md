@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Added
 
-- Added support for passing multiple parameters to markdown-lint.
+- Added support for passing multiple parameters to markdown-lint
 
 ## v1.1.0 - 2020-02-11
 
