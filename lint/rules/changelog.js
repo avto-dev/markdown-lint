@@ -9,29 +9,34 @@ module.exports = [{
             return token.type === "heading_open";
         }).forEach(function forToken(token) {
             if (token.tag === "h2") {
-                if (/^## [vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)?$/m.test(token.line)) {
-                    return;
-                }
-                if (/^## \[[vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)?]$/m.test(token.line)) {
-                    return;
-                }
-                if (/^## [vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|) [-–] 20[12][0-9]-[01][0-9]-[0-3][0-9]$/m.test(token.line)) {
-                    return;
-                }
-                if (/^## \[[vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)\] [-–] 20[12][0-9]-[01][0-9]-[0-3][0-9]$/m.test(token.line)) {
+                // eg.: `## v1.0.0`
+                if (/^## [vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)$/m.test(token.line)) {
                     return;
                 }
 
-                if (/^## unreleased$/mi.test(token.line)) {
+                // eg.: `## [v1.0.0]`
+                if (/^## \[[vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)]$/m.test(token.line)) {
                     return;
                 }
-                if (/^## \[unreleased\]$/mi.test(token.line)) {
+
+                // eg.: `## v1.0.0 – 2020-01-01`, `## v1.0.0 - 2020-01-01`
+                if (/^## [vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|) [-–] 20[12][0-9]-[01][0-9]-[0-3][0-9]$/m.test(token.line)) {
+                    return;
+                }
+
+                // eg.: `## [v1.0.0] – 2020-01-01`, `## [v1.0.0] - 2020-01-01`
+                if (/^## \[[vV]?\d+\.\d+\.\d+(-[0-9A-Za-z-.]+|)] [-–] 20[12][0-9]-[01][0-9]-[0-3][0-9]$/m.test(token.line)) {
+                    return;
+                }
+
+                // eg.: `## unreleased`, `## Unreleased`, `## UNRELEASED`
+                if (/^## unreleased$/mi.test(token.line)) {
                     return;
                 }
 
                 return onError({
                     lineNumber: token.lineNumber,
-                    detail: "Allowed formats: 'vX.X.X(-pre.release)' or 'vX.X.X(-pre.release) - YYYY-MM-DD' or 'UNRELEASED'",
+                    detail: "Allowed formats: 'vX.X.X(-pre.release)', '[vX.X.X(-pre.release)]', 'vX.X.X(-pre.release) - YYYY-MM-DD', '[vX.X.X(-pre.release)] – YYYY-MM-DD' or 'UNRELEASED'",
                     context: token.line
                 });
             }

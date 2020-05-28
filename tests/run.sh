@@ -20,7 +20,7 @@ runChangelogTest() {
   exit_code=$?;
 
   if [ "$want_error" = "false" ] && [ $exit_code -ne 0 ]; then
-    (>&2 echo "[ERROR] Exit code must equals 0") && exit 50;
+    (>&2 echo "[ERROR] Exit code must equals 0 ($output)") && exit 50;
   fi;
 
   if [ "$want_error" = "true" ] && [ $exit_code -eq 0 ]; then
@@ -37,8 +37,6 @@ runChangelogTest() {
 runChangelogTest ./samples/changelog/correct/sample-1.md false
 runChangelogTest ./samples/changelog/correct/sample-2.md false
 runChangelogTest ./samples/changelog/correct/sample-3.md false
-runChangelogTest ./samples/changelog/correct/keepachangelog-1.0.0.md false
-runChangelogTest ./samples/changelog/correct/keepachangelog-1.0.0-with-en-dash.md false
 runChangelogTest ./samples/changelog/incorrect/changes-list-with-ends-punctuation-1.md true "Lists items without punctuation"
 runChangelogTest ./samples/changelog/incorrect/changes-list-with-ends-punctuation-2.md true "Lists items without punctuation"
 runChangelogTest ./samples/changelog/incorrect/incorrect-cahnges-type-1.md true "Type of changes format"
