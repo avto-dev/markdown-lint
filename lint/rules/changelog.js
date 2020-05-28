@@ -41,7 +41,7 @@ module.exports = [{
 
                 return onError({
                     lineNumber: token.lineNumber,
-                    detail: "Allowed formats: 'vX.X.X(-pre.release)', '[vX.X.X(-pre.release)]', 'vX.X.X(-pre.release) - YYYY-MM-DD', '[vX.X.X(-pre.release)] – YYYY-MM-DD' or 'UNRELEASED'",
+                    detail: "Allowed formats: 'vX.X.X(-pre.release)', '[vX.X.X(-pre.release)]', 'vX.X.X(-pre.release) - YYYY-MM-DD', '[vX.X.X(-pre.release)] – YYYY-MM-DD', '[UNRELEASED]', or 'UNRELEASED'",
                     context: token.line
                 });
             }
