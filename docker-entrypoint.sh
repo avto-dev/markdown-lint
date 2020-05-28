@@ -22,4 +22,4 @@ if [ ! -z $INPUT_IGNORE ] && [ "$INPUT_IGNORE" != "" ]; then
   RUN_ARGS="$RUN_ARGS --ignore $INPUT_IGNORE";
 fi;
 
-exec /usr/local/bin/markdownlint $RUN_ARGS "$@"
+exec /usr/local/bin/markdownlint $RUN_ARGS $@
