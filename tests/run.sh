@@ -20,7 +20,7 @@ runChangelogTest() {
   exit_code=$?;
 
   if [ "$want_error" = "false" ] && [ $exit_code -ne 0 ]; then
-    (>&2 echo "[ERROR] Exit code must equals 0 ($output)") && exit 50;
+    (>&2 echo "[ERROR] Exit code must equals 0") && exit 50;
   fi;
 
   if [ "$want_error" = "true" ] && [ $exit_code -eq 0 ]; then
