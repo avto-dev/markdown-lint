@@ -8,9 +8,9 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Added
 
+- Added support for Keep-a-Changelog's links in the heading [#2]
+- Added support for using en dashes instead of minus signs [#2]
 - Added support for passing multiple parameters to `markdown-lint` [#3]
-
-[#3]:https://github.com/avto-dev/markdown-lint/pull/3
 
 ## v1.1.0 - 2020-02-11
 
@@ -44,3 +44,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 [keepachangelog]:https://keepachangelog.com/en/1.0.0/
 [semver]:https://semver.org/spec/v2.0.0.html
+[#2]:https://github.com/avto-dev/markdown-lint/pull/2
+[#3]:https://github.com/avto-dev/markdown-lint/pull/3
+
+<!-- markdownlint-disable-file MD024 -->

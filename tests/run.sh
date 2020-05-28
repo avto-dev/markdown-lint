@@ -35,11 +35,16 @@ runChangelogTest() {
 }
 
 runChangelogTest ./samples/changelog/correct/sample-1.md false
+runChangelogTest ./samples/changelog/correct/sample-2.md false
+runChangelogTest ./samples/changelog/correct/sample-3.md false
+runChangelogTest ./samples/changelog/correct/keepachangelog-1.0.0.md false
+runChangelogTest ./samples/changelog/correct/keepachangelog-1.0.0-with-en-dash.md false
 runChangelogTest ./samples/changelog/incorrect/changes-list-with-ends-punctuation-1.md true "Lists items without punctuation"
 runChangelogTest ./samples/changelog/incorrect/changes-list-with-ends-punctuation-2.md true "Lists items without punctuation"
 runChangelogTest ./samples/changelog/incorrect/incorrect-cahnges-type-1.md true "Type of changes format"
 runChangelogTest ./samples/changelog/incorrect/incorrect-cahnges-type-2.md true "Type of changes format"
 runChangelogTest ./samples/changelog/incorrect/missed-first-header.md true "First line in file should be a top"
+runChangelogTest ./samples/changelog/incorrect/no-proper-link.md true "Version header format"
 runChangelogTest ./samples/changelog/incorrect/wrong-version-header-1.md true "Version header format"
 runChangelogTest ./samples/changelog/incorrect/wrong-version-header-2.md true "Version header format"
 runChangelogTest ./samples/changelog/incorrect/wrong-version-header-3.md true "Version header format"
