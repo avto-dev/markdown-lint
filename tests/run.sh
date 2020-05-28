@@ -20,15 +20,15 @@ runChangelogTest() {
   exit_code=$?;
 
   if [ "$want_error" = "false" ] && [ $exit_code -ne 0 ]; then
-    (>&2 echo "[ERROR] Exit code must equals 0") && exit 50;
+    (>&2 echo "$0: [ERROR] Exit code must equals 0. Output [$output]") && exit 50;
   fi;
 
   if [ "$want_error" = "true" ] && [ $exit_code -eq 0 ]; then
-    (>&2 echo "[ERROR] Exit code must be grater then 0") && exit 50;
+    (>&2 echo "$0: [ERROR] Exit code must be grater then 0") && exit 50;
   fi;
 
   if [ "$want_error" = "true" ] && [ "$(echo "$output" | grep -c "$error_message")" -eq 0 ]; then
-    (>&2 echo "[ERROR] Expected error message [$error_message] was not found in output [$output]") && exit 50;
+    (>&2 echo "$0: [ERROR] Expected error message [$error_message] was not found in output [$output]") && exit 50;
   fi;
 
   echo "[OK] Test passed";
