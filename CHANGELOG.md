@@ -12,9 +12,6 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 - Added support for using en dashes instead of minus signs [#4]
 - Added support for passing multiple parameters to `markdown-lint` [#3]
 
-[#3]:https://github.com/avto-dev/markdown-lint/pull/3
-[#4]:https://github.com/avto-dev/markdown-lint/pull/4
-
 ## v1.1.0 - 2020-02-11
 
 ### Added
@@ -47,3 +44,5 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 [keepachangelog]:https://keepachangelog.com/en/1.0.0/
 [semver]:https://semver.org/spec/v2.0.0.html
+[#3]:https://github.com/avto-dev/markdown-lint/pull/3
+[#4]:https://github.com/avto-dev/markdown-lint/pull/4
