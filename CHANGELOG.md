@@ -4,13 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
-## Unreleased
+## v1.2.0 - 2020-05-28
 
 ### Added
 
-- Added support for Keep-a-Changelog's links in the heading [#4]
-- Added support for using en dashes instead of minus signs [#4]
-- Added support for passing multiple parameters to `markdown-lint` [#3]
+- Support for Keep-a-Changelog's links in the heading [#4]
+- Support for using en dashes instead of minus signs [#4]
+- Support for passing multiple parameters to `markdown-lint` [#3]
 
 ## v1.1.0 - 2020-02-11
 
