@@ -7,7 +7,7 @@ image_name = markdown-lint:local
 
 SHELL = /bin/sh
 
-.PHONY : help build test 'shell' clean
+.PHONY : help build test clean
 .DEFAULT_GOAL : help
 
 # This will output the help for each task. thanks to https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
