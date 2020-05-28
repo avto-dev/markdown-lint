@@ -32,7 +32,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Changed
 
-- GutHub action parameter `path` renamed to `args`
+- GitHub action parameter `path` renamed to `args`
 
 ## v0.0.1 - 2020-01-18
 
