@@ -8,6 +8,7 @@ LABEL \
   org.label-schema.vendor="avto-dev" \
   org.label-schema.vcs-url="https://github.com/avto-dev/markdown-lint"
 
+RUN apk add --no-cache bash
 RUN set -x \
   # package page: <https://github.com/igorshubovych/markdownlint-cli>
   && npm install -g markdownlint-cli \
