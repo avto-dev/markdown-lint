@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 - Support for globstar (`**`) by changing the shell to bash [#6]
 
+[#6]:https://github.com/avto-dev/markdown-lint/pull/6
+
 ## v1.2.0 - 2020-05-28
 
 ### Added
