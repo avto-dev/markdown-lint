@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+shopt -s globstar
 
 RUN_ARGS="";
 
