@@ -4,9 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
-## Unreleased
+## v1.2.0 - 2020-06-19
 
-- Fix support for globstar (`**`) by changing the shell to bash [#6]
+### Added
+
+- Support for globstar (`**`) by changing the shell to bash [#6]
 
 ## v1.2.0 - 2020-05-28
 
