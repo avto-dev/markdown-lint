@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## UNRELEASED
+
+### Changed
+
+- Fix quoting of `INPUT_*` env variables to allow multiple arguments in 1 env var
+
 ## v1.3.0 - 2020-06-19
 
 ### Added
