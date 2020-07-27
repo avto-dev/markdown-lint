@@ -6,9 +6,9 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ## UNRELEASED
 
-### Changed
+### Fixed
 
-- Fix quoting of `INPUT_*` env variables to allow multiple arguments in 1 env var
+- Quoting of `INPUT_*` env variables to allow multiple arguments in 1 env var
 
 ## v1.3.0 - 2020-06-19
 
