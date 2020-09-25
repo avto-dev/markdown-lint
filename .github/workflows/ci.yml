@@ -2,9 +2,17 @@ name: CI
 
 on:
   push:
-    branches: '**'
-    tags: '**'
+    branches:
+      - master
+    tags-ignore:
+      - '**'
+    paths-ignore:
+      - '**.md'
   pull_request:
+    paths-ignore:
+      - '**.md'
+  schedule:
+    - cron: '0 0 * * 0' # once in a week, docs: <https://git.io/JvxXE#onschedule>
 
 jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-actions>
   tests:
