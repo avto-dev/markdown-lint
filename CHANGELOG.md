@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.4.0 - 2020-09-25
+
+### Changed
+
+- Base docker image changed from `node:13-alpine` to `mhart/alpine-node:slim-12` (more lightweight)
+- `markdownlint-cli` version updated up to `0.23.2` (from `0.23.1`)
+
 ## v1.3.1 - 2020-07-27
 
 ### Fixed
