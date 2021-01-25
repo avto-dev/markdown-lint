@@ -60,7 +60,7 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
           rules: '/lint/rules/changelog.js'
           config: '/lint/config/changelog.yml'
           args: './CHANGELOG.md'
-          ignore: './foo ./bar ./foo\ bar'
+          ignore: './foo ./bar'
         env:
           DEBUG: 'true'
 
@@ -68,5 +68,6 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
         uses: ./
         with:
           args: './tests/correct.md'
+          ignore: './foo ./bar'
         env:
           DEBUG: 'true'
