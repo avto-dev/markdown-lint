@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Fixed
 
-- Multiple files ignoring (you can run current action `with: ingore: 'foo.md bar.md'` with space delimiter for multiple `--ignore` flag appending) [#7]
+- Multiple files ignoring (you can run current action `with: ignore: 'foo.md bar.md'` with space delimiter for multiple `--ignore` flag appending) [#7]
 
 [#7]:https://github.com/avto-dev/markdown-lint/issues/7
 
