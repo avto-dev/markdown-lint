@@ -14,11 +14,9 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Get version value
-        run: echo "::set-env name=_VERSION::${GITHUB_REF##*/}"
-
-      - name: Get major version value (without 'v' prefix)
-        run: echo "::set-env name=_MAJOR::`echo $_VERSION | sed 's#^[vV]\([0-9]*\)\..*$#\1#'`"
+      - name: Generate values
+        id: values
+        run: echo "::set-output name=major::`echo ${GITHUB_REF##*/} | sed 's#^[vV]\([0-9]*\)\..*$#\1#'`"
 
       - name: Setup git
         run: |
@@ -26,7 +24,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
       - name: Create tag
-        run: git tag -fa "v${_MAJOR}" -m "Update v${_MAJOR} tag (using GitHub actions)"
+        run: git tag -fa "v${{ steps.values.outputs.major }}" -m "Update v${{ steps.values.outputs.major }} tag (using GitHub actions)"
 
       - name: Push tag
-        run: git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" "v${_MAJOR}" --force
+        run: git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" "v${{ steps.values.outputs.major }}" --force
