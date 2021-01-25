@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Changed
 
-- `markdownlint-cli` version updated up to `0.23.2` (from `0.26.0`)
+- `markdownlint-cli` version updated up to `0.26.0` (from `0.23.2`)
 
 ### Fixed
 
