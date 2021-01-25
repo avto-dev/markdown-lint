@@ -65,7 +65,7 @@ $ docker run --rm \
     /CHANGELOG.md
 ```
 
-or 
+or
 
 ```bash
 $ docker run --rm \
@@ -88,11 +88,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Lint changelog file
-      uses: docker://avtodev/markdown-lint:v1
+      uses: docker://avtodev/markdown-lint:v1 # fastest way
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
         args: './CHANGELOG.md'
+        ignore: './one_file.md ./another_file.md' # multiple files must be separated with single space
 
     # Or using current repository as action:
 
