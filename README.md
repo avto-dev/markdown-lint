@@ -93,6 +93,7 @@ jobs:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
         args: './CHANGELOG.md'
+        ignore: './one_file.md ./another_file.md' # multiple files must be separated with single space
 
     # Or using current repository as action:
 
