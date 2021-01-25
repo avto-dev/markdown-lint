@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## UNRELEASED
+
+### Changed
+
+- `markdownlint-cli` version updated up to `0.23.2` (from `0.26.0`)
+
+### Fixed
+
+- Multiple files ignoring (you can run current action `with: ingore: 'foo.md bar.md'` with space delimiter for multiple `--ignore` flag appending) [#7]
+
+[#7]:https://github.com/avto-dev/markdown-lint/issues/7
+
 ## v1.4.0 - 2020-09-25
 
 ### Changed

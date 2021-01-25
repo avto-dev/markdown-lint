@@ -60,6 +60,7 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
           rules: '/lint/rules/changelog.js'
           config: '/lint/config/changelog.yml'
           args: './CHANGELOG.md'
+          ignore: './foo ./bar ./foo\ bar'
 
       - name: Run current action using stub markdown file
         uses: ./

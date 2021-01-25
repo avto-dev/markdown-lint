@@ -20,9 +20,11 @@ if [ "$INPUT_OUTPUT" != "" ]; then
 fi;
 
 if [ "$INPUT_IGNORE" != "" ]; then
-  RUN_ARGS="$RUN_ARGS --ignore $INPUT_IGNORE";
+  for ignore in $INPUT_IGNORE; do
+    RUN_ARGS="$RUN_ARGS --ignore $ignore";
+  done
 fi;
 
 # Do not quote "$@" as Github Actions passes each argument as a single arg.
-# So 'args: --fix foo bar.md'  would be treated as a single string and not be parsed by markdownlint
+# So 'args: --fix foo bar.md' would be treated as a single string and not be parsed by markdownlint
 exec /usr/local/bin/markdownlint $RUN_ARGS $@

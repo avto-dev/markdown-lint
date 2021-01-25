@@ -1,6 +1,6 @@
 FROM node:12-alpine as builder
 
-ARG MARKDOWN_CLI_VERSION="0.23.2"
+ARG MARKDOWN_CLI_VERSION="0.26.0"
 
 # install packages
 RUN set -x \

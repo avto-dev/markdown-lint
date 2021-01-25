@@ -65,7 +65,7 @@ $ docker run --rm \
     /CHANGELOG.md
 ```
 
-or 
+or
 
 ```bash
 $ docker run --rm \
@@ -88,7 +88,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Lint changelog file
-      uses: docker://avtodev/markdown-lint:v1
+      uses: docker://avtodev/markdown-lint:v1 # fastest way
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
