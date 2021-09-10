@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.5.1 - 2021-09-10
+
+### Fixed
+
+- Docker image name in example part of `README.md`
+
 ## v1.5.0 - 2021-01-26
 
 ### Changed
