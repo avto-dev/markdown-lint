@@ -88,7 +88,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Lint changelog file
-      uses: docker://avtodev/markdown-lint:v1 # fastest way
+      uses: docker://avto-dev/markdown-lint:v1 # fastest way
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
@@ -98,7 +98,7 @@ jobs:
     # Or using current repository as action:
 
     - name: Lint changelog file
-      uses: avtodev/markdown-lint@v1
+      uses: avto-dev/markdown-lint@v1
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
