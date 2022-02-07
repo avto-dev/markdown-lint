@@ -98,7 +98,7 @@ jobs:
     # Or using current repository as action:
 
     - name: Lint changelog file
-      uses: avtodev/markdown-lint@v1
+      uses: avto-dev/markdown-lint@v1
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
