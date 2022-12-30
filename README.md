@@ -112,7 +112,6 @@ MIT. Use anywhere for your pleasure.
 [badge_ci]:https://img.shields.io/github/actions/workflow/status/avto-dev/markdown-lint/ci.yml
 [badge_pulls]:https://img.shields.io/docker/pulls/avtodev/markdown-lint.svg?style=flat-square&maxAge=30
 [badge_issues]:https://img.shields.io/github/issues/avto-dev/markdown-lint.svg?style=flat-square&maxAge=30
-[badge_build]:https://img.shields.io/docker/cloud/build/avtodev/markdown-lint.svg?style=flat-square&maxAge=30
 [badge_license]:https://img.shields.io/github/license/avto-dev/markdown-lint.svg?style=flat-square&maxAge=30
 [link_hub]:https://hub.docker.com/r/avtodev/markdown-lint/
 [link_hub_tags]:https://hub.docker.com/r/avtodev/markdown-lint/tags
